@@ -41,6 +41,7 @@ def create_decode_key(input_data):
             key['4'] = i
         if len(i) == 7:
             key['8'] = i
+
     # find 3, 6, 9
     for i in input_data:
         if len(i) == 5:
@@ -54,6 +55,8 @@ def create_decode_key(input_data):
                 key['6'] = i
             if all([c in i for c in key['4']]):
                 key['9'] = i
+
+    # find upper right segment for 0, 2, 3
     upper_right = [d for d in key['1'] if d not in key['6']][0]
     for i in input_data:
         if len(i) == 5 and i != key['3']:
@@ -63,7 +66,6 @@ def create_decode_key(input_data):
                 key['5'] = i
         if len(i) == 6 and (i != key['6'] and i != key['9']):
             key['0'] = i
-
 
     return key
 
